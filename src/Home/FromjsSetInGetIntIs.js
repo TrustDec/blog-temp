@@ -25,6 +25,15 @@ export default class FromjsSetInGetIntIs extends Component {
             time:time.update('times',v=>v+1)})
         );
     }
+    get renderUpdateName(){
+        return _BUTTON_.map((item, index) => (
+            <Button
+                key={index}
+                title={`update ${item.title}`}
+                onClick={this.setStateData.bind(this, item.title)}
+            />
+        ));
+    }
     render() {
         let name = getIn(this.state.data, ['userInfo', 'data', 'name']);
         let time = this.state.time.get('times');
@@ -32,13 +41,7 @@ export default class FromjsSetInGetIntIs extends Component {
             <div>
                 <div>{name}</div>
                 <div>{time}</div>
-                {_BUTTON_.map((item, index) => (
-                    <Button
-                        key={index}
-                        title={`update ${item.title}`}
-                        onClick={this.setStateData.bind(this, item.title)}
-                    />
-                ))}
+                {this.renderUpdateName}
                 <Button title="update" onClick={this.handleAdd}/>
             </div>
         );
