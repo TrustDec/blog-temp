@@ -8,8 +8,6 @@ export default class FromjsSetInGetIntIs extends Component {
     shouldComponentUpdate(nextProps = {}, nextState = {}) {
         let thisState = this.state || {};
         for (const key in nextState) {
-            console.log(thisState[key]!==nextState[key])
-            console.log( !is(thisState[key],nextState[key]))
             if (thisState[key]!==nextState[key] && !is(thisState[key],nextState[key])) {
                 console.log('data不相等,允许渲染');
                 return true;
