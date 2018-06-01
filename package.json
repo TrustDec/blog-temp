@@ -2,6 +2,7 @@
   "name": "trust",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "immutable": "^4.0.0-rc.9",
     "react": "^16.4.0",
