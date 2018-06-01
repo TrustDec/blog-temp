@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { is, setIn, fromJS, getIn,Map } from 'immutable';
+import { is, setIn, fromJS, getIn, Map } from 'immutable';
 import Button from '../common/Button';
 const $$Obj = fromJS({ userInfo: { data: { name: 'Trust' } } });
-const $$times = Map({times:0});
+const $$times = Map({ times: 0 });
 export default class FromjsSetInGetIntIs extends Component {
-    state = { data: $$Obj,time:$$times };
+    state = { data: $$Obj, time: $$times };
     shouldComponentUpdate(nextProps = {}, nextState = {}) {
         let thisState = this.state || {};
         for (const key in nextState) {
-            if (thisState[key]!==nextState[key] && !is(thisState[key],nextState[key])) {
+            if (thisState[key] !== nextState[key] && !is(thisState[key], nextState[key])) {
                 console.log('data不相等,允许渲染');
                 return true;
             }
@@ -21,17 +21,13 @@ export default class FromjsSetInGetIntIs extends Component {
         this.setState({ data: $$newObj });
     };
     handleAdd = () => {
-        this.setState(({time})=>({
-            time:time.update('times',v=>v+1)})
-        );
-    }
-    get renderUpdateName(){
+        this.setState(({ time }) => ({
+            time: time.update('times', v => v + 1)
+        }));
+    };
+    get renderUpdateName() {
         return _BUTTON_.map((item, index) => (
-            <Button
-                key={index}
-                title={`update ${item.title}`}
-                onClick={this.setStateData.bind(this, item.title)}
-            />
+            <Button key={index} title={`update ${item.title}`} onClick={this.setStateData.bind(this, item.title)} />
         ));
     }
     render() {
@@ -42,7 +38,7 @@ export default class FromjsSetInGetIntIs extends Component {
                 <div>{name}</div>
                 <div>{time}</div>
                 {this.renderUpdateName}
-                <Button title="update" onClick={this.handleAdd}/>
+                <Button title="update" onClick={this.handleAdd} />
             </div>
         );
     }
